@@ -1,7 +1,7 @@
 # VIM-journey
 VIM configuration, install, tips
 
-## Install taglist for gvim7.4 on win7
+## Install taglist 
 * Download from http://vim.sourceforge.net/scripts/script.php?script_id=273
 * Copy doc/taglist.txt to <vim_install_path>/vimfiles/doc
 * Copy plugin/taglis.vim to <vim_install_path>/vimfiles/plugin
@@ -19,11 +19,11 @@ let Tlist_Process_File_Always=0 "是否一直处理tags.1:处理;0:不处理。�
 let Tlist_Inc_Winwidth=0
 ```
 
-## Install ctag for gvim7.4 on win7
+## Install ctag 
 * Download from http://www.vim.org/scripts/script.php?script_id=2288
 * Copy ctag.exe to <vim_install_path>/vim74/
 
-## Install cscope for gvim7.4 on win7
+## Install cscope
 * Download from https://code.google.com/p/cscope-win32/downloads/list
 * Copy cscope.exe to <vim_install_path>/vim74/
 * .vimrc 设置 <转载自http://www.vimer.cn>
@@ -115,7 +115,6 @@ endfunction
  
     doc\omnicppcomplete.txt
 ```
-* not done yet, error" no patten"
 
 ## Install NerdTree(ref:http://www.cnblogs.com/feichexia/archive/2012/11/07/Vim_NerdTree.html)
 * Download from http://www.vim.org/scripts/script.php?script_id=1658
