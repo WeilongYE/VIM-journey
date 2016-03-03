@@ -1,0 +1,192 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Vim-journey by WeilongYE</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Vim-journey</h1>
+        <p>VIM configuration, install, tips</p>
+
+        <p class="view"><a href="https://github.com/WeilongYE/VIM-journey">View the Project on GitHub <small>WeilongYE/VIM-journey</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/WeilongYE/VIM-journey/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/WeilongYE/VIM-journey/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/WeilongYE/VIM-journey">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="vim-journey" class="anchor" href="#vim-journey" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>VIM-journey</h1>
+
+<p>VIM configuration, install, tips</p>
+
+<h2>
+<a id="install-taglist" class="anchor" href="#install-taglist" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Install taglist</h2>
+
+<ul>
+<li>Download from <a href="http://vim.sourceforge.net/scripts/script.php?script_id=273">http://vim.sourceforge.net/scripts/script.php?script_id=273</a>
+</li>
+<li>Copy doc/taglist.txt to /vimfiles/doc</li>
+<li>Copy plugin/taglis.vim to /vimfiles/plugin</li>
+<li>.vimrc 设置 &lt;转载自<a href="http://www.vimer.cn%3E">http://www.vimer.cn&gt;</a>
+</li>
+</ul>
+
+<div class="highlight highlight-source-c"><pre><span class="pl-s"><span class="pl-pds">"</span>进行Tlist的设置</span>
+<span class="pl-s"><span class="pl-pds">"</span></span>TlistUpdate可以更新tags
+map &lt;F3&gt; :silent! Tlist&lt;CR&gt; <span class="pl-s"><span class="pl-pds">"</span>按下F3就可以呼出了</span>
+<span class="pl-s">let Tlist_Ctags_Cmd='ctags' <span class="pl-pds">"</span></span>因为我们放在环境变量里，所以可以直接执行
+let Tlist_Use_Right_Window=<span class="pl-c1">1</span> <span class="pl-s"><span class="pl-pds">"</span>让窗口显示在右边，0的话就是显示在左边</span>
+<span class="pl-s">let Tlist_Show_One_File=0 <span class="pl-pds">"</span></span>让taglist可以同时展示多个文件的函数列表，如果想只有<span class="pl-c1">1</span>个，设置为<span class="pl-c1">1</span>
+let Tlist_File_Fold_Auto_Close=<span class="pl-c1">1</span> <span class="pl-s"><span class="pl-pds">"</span>非当前文件，函数列表折叠隐藏</span>
+<span class="pl-s">let Tlist_Exit_OnlyWindow=1 <span class="pl-pds">"</span></span>当taglist是最后一个分割窗口时，自动推出vim
+let Tlist_Process_File_Always=<span class="pl-c1">0</span> <span class="pl-s"><span class="pl-pds">"</span>是否一直处理tags.1:处理;0:不处理。不是一直实时更新tags，因为没有必要</span>
+<span class="pl-s">let Tlist_Inc_Winwidth=0</span></pre></div>
+
+<h2>
+<a id="install-ctag" class="anchor" href="#install-ctag" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Install ctag</h2>
+
+<ul>
+<li>Download from <a href="http://www.vim.org/scripts/script.php?script_id=2288">http://www.vim.org/scripts/script.php?script_id=2288</a>
+</li>
+<li>Copy ctag.exe to /vim74/</li>
+</ul>
+
+<h2>
+<a id="install-cscope" class="anchor" href="#install-cscope" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Install cscope</h2>
+
+<ul>
+<li>Download from <a href="https://code.google.com/p/cscope-win32/downloads/list">https://code.google.com/p/cscope-win32/downloads/list</a>
+</li>
+<li>Copy cscope.exe to /vim74/</li>
+<li>.vimrc 设置 &lt;转载自<a href="http://www.vimer.cn%3E">http://www.vimer.cn&gt;</a>
+</li>
+</ul>
+
+<div class="highlight highlight-source-c"><pre>map &lt;F12&gt; :call <span class="pl-en">Do_CsTag</span>()&lt;CR&gt;
+nmap &lt;C-@&gt;s :cs find s &lt;C-R&gt;=expand(<span class="pl-s"><span class="pl-pds">"</span>&lt;cword&gt;<span class="pl-pds">"</span></span>)&lt;CR&gt;&lt;CR&gt;:copen&lt;CR&gt;
+nmap &lt;C-@&gt;g :cs find g &lt;C-R&gt;=expand(<span class="pl-s"><span class="pl-pds">"</span>&lt;cword&gt;<span class="pl-pds">"</span></span>)&lt;CR&gt;&lt;CR&gt;
+nmap &lt;C-@&gt;c :cs find c &lt;C-R&gt;=expand(<span class="pl-s"><span class="pl-pds">"</span>&lt;cword&gt;<span class="pl-pds">"</span></span>)&lt;CR&gt;&lt;CR&gt;:copen&lt;CR&gt;
+nmap &lt;C-@&gt;t :cs find t &lt;C-R&gt;=expand(<span class="pl-s"><span class="pl-pds">"</span>&lt;cword&gt;<span class="pl-pds">"</span></span>)&lt;CR&gt;&lt;CR&gt;:copen&lt;CR&gt;
+nmap &lt;C-@&gt;e :cs find e &lt;C-R&gt;=expand(<span class="pl-s"><span class="pl-pds">"</span>&lt;cword&gt;<span class="pl-pds">"</span></span>)&lt;CR&gt;&lt;CR&gt;:copen&lt;CR&gt;
+nmap &lt;C-@&gt;f :cs find f &lt;C-R&gt;=expand(<span class="pl-s"><span class="pl-pds">"</span>&lt;cfile&gt;<span class="pl-pds">"</span></span>)&lt;CR&gt;&lt;CR&gt;:copen&lt;CR&gt;
+nmap &lt;C-@&gt;i :cs find i ^&lt;C-R&gt;=expand(<span class="pl-s"><span class="pl-pds">"</span>&lt;cfile&gt;<span class="pl-pds">"</span></span>)&lt;CR&gt;$&lt;CR&gt;:copen&lt;CR&gt;
+nmap &lt;C-@&gt;d :cs find d &lt;C-R&gt;=expand(<span class="pl-s"><span class="pl-pds">"</span>&lt;cword&gt;<span class="pl-pds">"</span></span>)&lt;CR&gt;&lt;CR&gt;:copen&lt;CR&gt;
+function Do_CsTag()
+    let dir = getcwd()
+    if filereadable(<span class="pl-s"><span class="pl-pds">"</span>tags<span class="pl-pds">"</span></span>)
+        if(g:iswindows==<span class="pl-c1">1</span>)
+            let tagsdeleted=delete(dir.<span class="pl-s"><span class="pl-pds">"</span><span class="pl-cce">\\</span><span class="pl-pds">"</span></span>.<span class="pl-s"><span class="pl-pds">"</span>tags<span class="pl-pds">"</span></span>)
+        else
+            let tagsdeleted=delete(<span class="pl-s"><span class="pl-pds">"</span>./<span class="pl-pds">"</span></span>.<span class="pl-s"><span class="pl-pds">"</span>tags<span class="pl-pds">"</span></span>)
+        endif
+        if(tagsdeleted!=<span class="pl-c1">0</span>)
+            echohl WarningMsg | echo "Fail to do tags! I cannot delete the tags" | echohl None
+            return
+        endif
+    endif
+    if has(<span class="pl-s"><span class="pl-pds">"</span>cscope<span class="pl-pds">"</span></span>)
+        silent! execute "cs kill -1"
+    endif
+    if filereadable(<span class="pl-s"><span class="pl-pds">"</span>cscope.files<span class="pl-pds">"</span></span>)
+        if(g:iswindows==<span class="pl-c1">1</span>)
+            let csfilesdeleted=delete(dir.<span class="pl-s"><span class="pl-pds">"</span><span class="pl-cce">\\</span><span class="pl-pds">"</span></span>.<span class="pl-s"><span class="pl-pds">"</span>cscope.files<span class="pl-pds">"</span></span>)
+        else
+            let csfilesdeleted=delete(<span class="pl-s"><span class="pl-pds">"</span>./<span class="pl-pds">"</span></span>.<span class="pl-s"><span class="pl-pds">"</span>cscope.files<span class="pl-pds">"</span></span>)
+        endif
+        if(csfilesdeleted!=<span class="pl-c1">0</span>)
+            echohl WarningMsg | echo "Fail to do cscope! I cannot delete the cscope.files" | echohl None
+            return
+        endif
+    endif
+    if filereadable(<span class="pl-s"><span class="pl-pds">"</span>cscope.out<span class="pl-pds">"</span></span>)
+        if(g:iswindows==<span class="pl-c1">1</span>)
+            let csoutdeleted=delete(dir.<span class="pl-s"><span class="pl-pds">"</span><span class="pl-cce">\\</span><span class="pl-pds">"</span></span>.<span class="pl-s"><span class="pl-pds">"</span>cscope.out<span class="pl-pds">"</span></span>)
+        else
+            let csoutdeleted=delete(<span class="pl-s"><span class="pl-pds">"</span>./<span class="pl-pds">"</span></span>.<span class="pl-s"><span class="pl-pds">"</span>cscope.out<span class="pl-pds">"</span></span>)
+        endif
+        if(csoutdeleted!=<span class="pl-c1">0</span>)
+            echohl WarningMsg | echo "Fail to do cscope! I cannot delete the cscope.out" | echohl None
+            return
+        endif
+    endif
+    if(executable(<span class="pl-s"><span class="pl-pds">'</span>ctags<span class="pl-pds">'</span></span>))
+        "silent! execute "!ctags -R --c-types=+p --fields=+S *"
+        silent! execute "!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q ."
+    endif
+    if(executable(<span class="pl-s"><span class="pl-pds">'</span>cscope<span class="pl-pds">'</span></span>) &amp;&amp; has(<span class="pl-s"><span class="pl-pds">"</span>cscope<span class="pl-pds">"</span></span>) )
+        if(g:iswindows!=<span class="pl-c1">1</span>)
+            silent! execute "!find . -name '*.h' -o -name '*.c' -o -name '*.cpp' -o -name '*.java' -o -name '*.cs' &gt; cscope.files"
+        else
+            silent! execute "!dir /s/b *.c,*.cpp,*.h,*.java,*.cs &gt;&gt; cscope.files"
+        endif
+        silent! execute "!cscope -b"
+        execute "normal :"
+        if filereadable(<span class="pl-s"><span class="pl-pds">"</span>cscope.out<span class="pl-pds">"</span></span>)
+            execute "cs add cscope.out"
+        endif
+    endif
+endfunction</pre></div>
+
+<h2>
+<a id="install-omnicppcomplete-for-gvim74-on-win7" class="anchor" href="#install-omnicppcomplete-for-gvim74-on-win7" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Install omnicppcomplete for gvim7.4 on win7</h2>
+
+<ul>
+<li>Download from <a href="http://www.vim.org/scripts/script.php?script_id=1520">http://www.vim.org/scripts/script.php?script_id=1520</a>
+</li>
+<li>Install, directory like this:</li>
+</ul>
+
+<div class="highlight highlight-source-c"><pre> after\ftplugin\cpp.vim
+    after\ftplugin\c.vim
+
+    autoload\omni\common\debug.vim
+                        \utils.vim
+
+    autoload\omni\cpp\complete.vim
+                     \includes.vim
+                     \items.vim
+                     \maycomplete.vim
+                     \namespaces.vim
+                     \settings.vim
+                     \tokenizer.vim
+                     \utils.vim
+
+    doc\omnicppcomplete.txt</pre></div>
+
+<h2>
+<a id="install-nerdtreerefhttpwwwcnblogscomfeichexiaarchive20121107vim_nerdtreehtml" class="anchor" href="#install-nerdtreerefhttpwwwcnblogscomfeichexiaarchive20121107vim_nerdtreehtml" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Install NerdTree(ref:<a href="http://www.cnblogs.com/feichexia/archive/2012/11/07/Vim_NerdTree.html">http://www.cnblogs.com/feichexia/archive/2012/11/07/Vim_NerdTree.html</a>)</h2>
+
+<ul>
+<li>Download from <a href="http://www.vim.org/scripts/script.php?script_id=1658">http://www.vim.org/scripts/script.php?script_id=1658</a>
+</li>
+<li>Copy NERD_tree.txt to /vimfiles/doc</li>
+<li>Copy NERD_tree.vim to /vimfiles/plugin</li>
+<li>.vimrc设置</li>
+</ul>
+
+<div class="highlight highlight-source-c"><pre>map &lt;C-E&gt; :NERDTreeMirror&lt;CR&gt;
+map &lt;C-E&gt; :NERDTreeToggle&lt;CR&gt;</pre></div>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/WeilongYE">WeilongYE</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
